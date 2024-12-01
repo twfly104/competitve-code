@@ -26,7 +26,7 @@ const int mxN = 1e3;
 int p[mxN];
 
 int main() {
-	ios::sync_with_stdio(false); cin.tie(0);
+    ios::sync_with_stdio(false); cin.tie(0);
     while (1) {
         string s, s1; cin >> s;
         if (s == "#") break;
@@ -47,5 +47,5 @@ int main() {
         }
         cout << ans << "\n";
     }
-	return 0;
+    return 0;
 }
