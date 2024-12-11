@@ -26,16 +26,14 @@ const int mxN = 1e6;
 int p[mxN];
 
 int main() {
-  ios::sync_with_stdio(false); cin.tie(0);
-  int n;
-	cin >> n;
-	string s;
-	cin >> s;
+    ios::sync_with_stdio(false); cin.tie(0);
+    int n; cin >> n;
+	string s; cin >> s;
 	for (int i = 1, j = 0; i < n; i++) {
 		while (j && s[i] != s[j]) j = p[j - 1];
 		if (s[i] == s[j]) j++;
 		p[i] = j;
 	}
 	cout << n - p[n - 1];
-  return 0;
+    return 0;
 }
