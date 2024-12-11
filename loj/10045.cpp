@@ -27,8 +27,10 @@ int p[mxN];
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(0);
-    int n; cin >> n;
-	string s; cin >> s;
+    int n;
+	cin >> n;
+	string s;
+	cin >> s;
 	for (int i = 1, j = 0; i < n; i++) {
 		while (j && s[i] != s[j]) j = p[j - 1];
 		if (s[i] == s[j]) j++;
