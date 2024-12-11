@@ -22,18 +22,30 @@ void dout(T t, U...u) {cerr << t << (sizeof... (u) ? ", ":""), dout(u...);}
 #define FOR(i, n) for (int i = 0; i < (n); i++)
 #define FOR1(i, a, b) for (int i = (a); i <= (b); i++)
 
-const int mxN = 1e6;
+const int mxN = 1e3;
 int p[mxN];
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(0);
-    int n; cin >> n;
-	string s; cin >> s;
-	for (int i = 1, j = 0; i < n; i++) {
-		while (j && s[i] != s[j]) j = p[j - 1];
-		if (s[i] == s[j]) j++;
-		p[i] = j;
-	}
-	cout << n - p[n - 1];
+    while (1) {
+        string s, s1; cin >> s;
+        if (s == "#") break;
+        cin >> s1;
+        for (int i = 1, j = 0; i < sz(s1); i++) {
+            while (j && s1[i] != s1[j]) j = p[j - 1];
+            if (s1[i] == s[j]) j++;
+            p[i] = j;
+        }
+        int ans = 0;
+        for (int i = 0, j = 0; i < sz(s); i++) {
+            while (j && s[i] != s1[j]) j = p[j - 1];
+            if (s[i] == s1[j]) j++;
+            if (j == sz(s1)) {
+                ans++;
+                j = 0;
+            }
+        }
+        cout << ans << "\n";
+    }
     return 0;
 }
