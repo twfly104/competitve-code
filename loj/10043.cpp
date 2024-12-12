@@ -33,7 +33,7 @@ int main() {
         cin >> s1;
         for (int i = 1, j = 0; i < sz(s1); i++) {
             while (j && s1[i] != s1[j]) j = p[j - 1];
-            if (s1[i] == s[j]) j++;
+            if (s1[i] == s1[j]) j++;
             p[i] = j;
         }
         int ans = 0;
