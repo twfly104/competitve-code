@@ -35,10 +35,10 @@ void kmp() {
 }
 
 int main() {
-    ios::sync_with_stdio(false); cin.tie(0);
+	ios::sync_with_stdio(false); cin.tie(0);
 	cin >> s >> s1;
 	stack<int> stk;
-    stack<char> ans;
+	stack<char> ans;
 	kmp();
 	for (int i = 0, j = 0; i < sz(s); i++) {
 		while (j && s[i] != s1[j]) j = p[j - 1];
@@ -55,11 +55,11 @@ int main() {
 		}
 	}
 	string ans1;
-    while (sz(ans)) {
-        ans1 += ans.top();
-        ans.pop();
-    }
-    reverse(ans1.begin(), ans1.end());
-    cout << ans1;
-    return 0;
+	while (sz(ans)) {
+		ans1 += ans.top();
+		ans.pop();
+	}
+	reverse(ans1.begin(), ans1.end());
+	cout << ans1;
+	return 0;
 }
