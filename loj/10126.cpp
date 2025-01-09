@@ -4,6 +4,7 @@ using namespace std;
 #define ll long long
 
 const int mxN=1e6;
+
 ll t[mxN*4+1], add[mxN*4+1];
 
 void push_up(int idx) {
