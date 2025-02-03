@@ -14,7 +14,7 @@ int dfs(int pos, int pre, int lead, int lim) {
 		if(i==0&&lead) {
 			ans+=dfs(pos-1, 0, 1, 0);
 			continue;
-		};
+		}
 		if(pre>i) continue;
 		ans+=dfs(pos-1, i, 0, lim&&(i==a[pos]));
 	}
