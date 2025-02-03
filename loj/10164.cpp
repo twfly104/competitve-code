@@ -37,4 +37,5 @@ int main() {
 	while(cin>>a>>b) {
 		cout<<solve(b)-solve(a-1)<<"\n";
 	}
+	return 0;
 }
