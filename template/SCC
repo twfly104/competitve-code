@@ -1,6 +1,0 @@
-struct HLD {
-    vector<int> adj;
-    HLD(int n) : adj(n) {
-            
-    };
-};
