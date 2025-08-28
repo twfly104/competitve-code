@@ -40,7 +40,7 @@ void solve(int n) {
         stk.push_back(p[i]);
     }
     stk.pop_back();
-    cout<<sz(stk)<<"\n";
+    cout<<sz(stk)<<endl;
     for(int i=0; i<sz(stk); i++) {
         cout<<stk[i].ff<<' '<<stk[i].ss<<endl;
     }
