@@ -6,13 +6,13 @@ const int mxN=2e5;
 struct TREAP {
     int l=0, r=0;
     int siz=0;
-    char val;
+    int val;
     int pri;
 } t[mxN+1];
  
 int tot=0, rt=0;
  
-void newNode(int &idx, char v) {
+void newNode(int &idx, int v) {
     idx=++tot;
     t[idx].pri=rng()%1000000000;
     t[idx].val=v;
