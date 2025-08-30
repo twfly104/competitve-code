@@ -1,28 +1,30 @@
 mt19937 mt(chrono::steady_clock::now().time_since_epoch().count());
 ll rng() {return uniform_int_distribution<ll>(1, 1e18)(mt);}
- 
+
 const int mxN=2e5;
- 
+
 struct TREAP {
-    int l=0, r=0;
-    int siz=0;
+    int l, r;
+    int siz;
     int val;
     int pri;
 } t[mxN+1];
- 
+
 int tot=0, rt=0;
- 
+
 void newNode(int &idx, int v) {
     idx=++tot;
-    t[idx].pri=rng()%1000000000;
+    t[idx].pri=rng()%10000000000;
+    t[idx].l=0;
+    t[idx].r=0;
     t[idx].val=v;
     t[idx].siz=1;
 }
- 
+
 void psh(int idx) {
     t[idx].siz=1+t[t[idx].l].siz+t[t[idx].r].siz;
 }
- 
+
 void split_val(int idx, int v, int &x, int &y) {
     if(!idx) {
         x=y=0;
@@ -36,7 +38,7 @@ void split_val(int idx, int v, int &x, int &y) {
         split_val(t[idx].l, v, x, t[idx].l);
     }
 }
- 
+
 void split_siz(int idx, int v, int &x, int &y) {
     if(!idx) {
         x=y=0;
@@ -51,7 +53,7 @@ void split_siz(int idx, int v, int &x, int &y) {
     }
     psh(idx);
 }
- 
+
 int merge(int x, int y) {
     if(!x||!y) return (x?x:y);
     if(t[x].pri<t[y].pri) {
