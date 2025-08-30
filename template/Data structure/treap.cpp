@@ -37,6 +37,7 @@ void split_val(int idx, int v, int &x, int &y) {
         y=idx;
         split_val(t[idx].l, v, x, t[idx].l);
     }
+    psh(idx);
 }
 
 void split_siz(int idx, int v, int &x, int &y) {
