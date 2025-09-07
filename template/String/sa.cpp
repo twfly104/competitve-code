@@ -2,10 +2,6 @@ struct SA {
     string s;
     vector<pair<pair<int, int>, int>> suf;
     vector<int> lcp;
-    SA(string _s) : s(_s+'$') {
-        suf.resize(sz(s));
-        lcp.resize(sz(s));
-    }
     void radix_sort(vector<pair<pair<int, int>, int>> &suf) {
         for(int i=0; i<2; i++) {
             auto get=[&](auto x) -> int {
@@ -30,8 +26,9 @@ struct SA {
             suf=res;
         }
     }   
-    void sa() {
-        s+='$';
+    SA(string _s) : s(_s+'$') {
+        suf.resize(sz(s));
+        lcp.resize(sz(s));
         for(int i=0; i<sz(s); i++) {
             suf[i]={{s[i], 0}, i};
         }
