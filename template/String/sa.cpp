@@ -16,7 +16,7 @@ void radix_sort(vector<pair<pair<int, int>, int>> &suf) {
             cnt[i]+=cnt[i-1];
         }
         vector<pair<pair<int, int>, int>> res(sz(suf));
-        for(int i=sz(suf)-1; i>=0;i--) {//
+        for(int i=sz(suf)-1; i>=0; i--) {
             res[--cnt[get(suf[i])]]=suf[i];
         }
         suf=res;
@@ -34,9 +34,9 @@ int main() {
     sort(all(suf));
     vector<int> rk(sz(s));
     for(int i=1; i<sz(s); i++) {
-            auto [x, y]=suf[i-1];
-            auto [x1, y1]=suf[i];
-            rk[y1]=rk[y]+(x1>x);
+        auto [x, y]=suf[i-1];
+        auto [x1, y1]=suf[i];
+        rk[y1]=rk[y]+(x1>x);
     }
     for(int k=1; k<sz(s); k*=2) {
         for(auto &[x, y] : suf) {
@@ -47,10 +47,15 @@ int main() {
             auto [x, y]=suf[i-1];
             auto [x1, y1]=suf[i];
             rk[y1]=rk[y]+(x1>x);
-        }
+        }    
     }
-    for(int i=0; i<sz(s); i++) {
-        cout<<suf[i].ss<<' ';
+    vector<int> lcp(sz(s));
+    for(int i=0, k=0; i<sz(s); i++) {
+        if(k) k--;
+        if(!rk[i]) continue;
+        int j=suf[rk[i]-1].ss;
+        while(s[i+k]==s[j+k]) k++;
+        lcp[rk[i]]=k;
     }
     return 0;
 }
